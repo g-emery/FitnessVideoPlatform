@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Strapi build / uploads / env
+strapi-backend/.cache
+strapi-backend/build
+strapi-backend/.env
+strapi-backend/public/uploads
+strapi-backend/node_modules/
+
+# React
+react-frontend/build
+react-frontend/node_modules/
+react-frontend/.env*
+
+# OS
+.DS_Store
+Thumbs.db
