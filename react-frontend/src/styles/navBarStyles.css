@@ -1,0 +1,76 @@
+/* General navbar container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #009639; /* Nuffield green */
+  color: white;
+  padding: 10px 40px;
+  height: 60px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Left side: logo + brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logo-img {
+  height: 50px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  background: white;
+  color: #009639;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Right side: nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    margin-top: 10px;
+  }
+}
