@@ -4,14 +4,13 @@ import SearchBar from "./searchBar";
 function FetchVideos() {
   const [videos, setVideos] = useState([]);
   const [selectedTag, setSelectedTag] = useState("all");
+  const [fullscreenVideo, setFullscreenVideo] = useState(null);
 
   useEffect(() => {
     const getVideos = async () => {
       try {
-        // Populate tags AND uploaded media
         let url = "http://localhost:1337/api/videos?populate=*";
 
-        // Filter by selected tag if not "all"
         if (selectedTag !== "all") {
           url += `&filters[tags][tag][$containsi]=${encodeURIComponent(selectedTag)}`;
         }
@@ -38,19 +37,16 @@ function FetchVideos() {
       {videos.length === 0 && <p>No videos found.</p>}
 
       {videos.map((video) => {
-        // Use capitalized API fields
         const title = video.Title || "No Title";
         const description = video.Description || "No Description";
-
-        // Safely access uploaded file (single File)
         const fileData = video.File;
         const videoUrl = fileData?.url
           ? `http://localhost:1337${fileData.url}`
           : video.Video_URL;
 
-        // Tags
-        const tags = video.attributes?.tags?.map(tag => tag.attributes.tag) || [];
-        console.log({ title, description, videoUrl, tags });
+        const tags =
+          video.attributes?.tags?.map((tag) => tag.attributes.tag) || [];
+
         return (
           <div
             key={video.id}
@@ -59,7 +55,9 @@ function FetchVideos() {
               border: "1px solid #ddd",
               padding: "1rem",
               borderRadius: "10px",
+              cursor: "pointer",
             }}
+            onClick={() => setFullscreenVideo(videoUrl)}
           >
             <h2>{title}</h2>
             <p>{description}</p>
@@ -72,9 +70,10 @@ function FetchVideos() {
                   src={videoUrl.replace("watch?v=", "embed/")}
                   title={title}
                   allowFullScreen
+                  style={{ borderRadius: "8px" }}
                 />
               ) : (
-                <video width="560" controls>
+                <video width="560" controls style={{ borderRadius: "8px" }}>
                   <source src={videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
@@ -85,6 +84,44 @@ function FetchVideos() {
           </div>
         );
       })}
+
+      {/* 🎥 Fullscreen overlay */}
+      {fullscreenVideo && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0,0,0,0.9)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+          }}
+          onClick={() => setFullscreenVideo(null)}
+        >
+          {fullscreenVideo.includes("youtube") ? (
+            <iframe
+              width="80%"
+              height="80%"
+              src={fullscreenVideo.replace("watch?v=", "embed/")}
+              title="Fullscreen video"
+              allowFullScreen
+              style={{ border: "none", borderRadius: "8px" }}
+            />
+          ) : (
+            <video
+              src={fullscreenVideo}
+              controls
+              autoPlay
+              style={{ width: "80%", height: "auto", borderRadius: "8px" }}
+              onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside video
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }
