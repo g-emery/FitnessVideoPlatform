@@ -30,7 +30,7 @@ function FetchVideos() {
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h1>🎬 Video Library - On Demand</h1>
+      <h1>24/7</h1>
 
       <SearchBar selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
 
@@ -43,9 +43,6 @@ function FetchVideos() {
         const videoUrl = fileData?.url
           ? `http://localhost:1337${fileData.url}`
           : video.Video_URL;
-
-        const tags =
-          video.attributes?.tags?.map((tag) => tag.attributes.tag) || [];
 
         return (
           <div

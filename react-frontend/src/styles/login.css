@@ -1,0 +1,101 @@
+/* /c:/Users/glen.emery/Documents/repos/fitnessVideoPlatform/react-frontend/src/styles/login.css */
+
+/* Reset box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Center the login box in the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #eef3f6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Shaded box around the form */
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 28px rgba(20, 30, 40, 0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+    border: 1px solid rgba(16,24,40,0.04);
+}
+
+/* Form layout: inputs stacked and centered */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center; /* centers narrower inputs horizontally */
+}
+
+/* Inputs and controls: centered and readable */
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="tel"],
+.login-form textarea,
+.login-form select {
+    width: 100%;
+    max-width: 360px; /* keeps them nicely centered inside the box */
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(16,24,40,0.08);
+    background: #ffffff;
+    font-size: 15px;
+    color: #111827;
+    outline: none;
+    transition: box-shadow 120ms ease, border-color 120ms ease;
+}
+
+/* Focus state for accessibility */
+.login-form input:focus,
+.login-form textarea:focus,
+.login-form select:focus {
+    border-color: #6ca0ff;
+    box-shadow: 0 6px 18px rgba(108,160,255,0.12);
+}
+
+/* Optional: centered submit button */
+.login-form button {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Small helper: center labels if used */
+.login-form label {
+    width: 100%;
+    max-width: 360px;
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    color: #374151;
+}
+
+/* Make sure small forms look good on narrow screens */
+@media (max-width: 420px) {
+    .login-box {
+        padding: 18px;
+    }
+}
