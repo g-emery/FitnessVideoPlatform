@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from './NavBar';
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [identifier, setIdentifier] = useState(''); // email or username
@@ -33,7 +33,8 @@ export default function Login() {
 
   return (
     <>
-    <NavBar />
+    <h1>Sign In</h1>
+   
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -52,6 +53,9 @@ export default function Login() {
       <button type="submit">Login</button>
       <p>{message}</p>
     </form>
+    <Link to="/register">
+    <h4>Dont have a login</h4>
+    </Link>
     </>
   );
 }

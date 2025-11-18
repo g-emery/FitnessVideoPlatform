@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import NavBar from './NavBar';
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -24,7 +24,7 @@ export default function Register() {
 
   return (
     <>
-    <NavBar />
+    <h1>Register</h1>
     <form onSubmit={handleSubmit}>
       <input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
       <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
@@ -32,6 +32,7 @@ export default function Register() {
       <button type="submit">Register</button>
       <p>{message}</p>
     </form>
+    
     </>
   );
 }
