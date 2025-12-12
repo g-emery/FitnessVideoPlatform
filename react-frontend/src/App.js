@@ -1,8 +1,10 @@
-import FetchVideos from "./FetchVideos";
-import Login from "./Login";
-import NavBar from "./NavBar";
-import Register from "./Register";
+import FetchVideos from "./pages/FetchVideos";
+import Login from "./pages/Login";
+import NavBar from "./components/NavBar";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 
@@ -13,7 +15,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/videos" element={<FetchVideos />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/videos" element={
+          <ProtectedRoute>
+          <FetchVideos />
+          </ProtectedRoute>
+        } 
+        />
       </Routes>
     </Router>
 

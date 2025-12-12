@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import "../styles/forms.css"
 
 export default function Login() {
   const [identifier, setIdentifier] = useState(''); // email or username
@@ -32,7 +33,9 @@ export default function Login() {
   };
 
   return (
-    <>
+    
+    <div className="auth-container">
+    <div className="auth-box">
     <h1>Sign In</h1>
    
     <form onSubmit={handleSubmit}>
@@ -56,6 +59,7 @@ export default function Login() {
     <Link to="/register">
     <h4>Dont have a login</h4>
     </Link>
-    </>
+    </div>
+    </div>
   );
 }

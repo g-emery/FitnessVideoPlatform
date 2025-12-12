@@ -1,5 +1,5 @@
-import "./styles/navBarStyles.css";
-import logo from "./styles/nhLogo.png";
+import "../styles/navBarStyles.css";
+import logo from "../styles/nhLogo.png";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {

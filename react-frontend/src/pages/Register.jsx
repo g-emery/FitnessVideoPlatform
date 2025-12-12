@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import "../styles/forms.css"
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -23,7 +24,9 @@ export default function Register() {
   };
 
   return (
-    <>
+    
+    <div className="auth-container">
+    <div className="auth-box">
     <h1>Register</h1>
     <form onSubmit={handleSubmit}>
       <input placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
@@ -32,7 +35,7 @@ export default function Register() {
       <button type="submit">Register</button>
       <p>{message}</p>
     </form>
-    
-    </>
+    </div>
+    </div>
   );
 }
